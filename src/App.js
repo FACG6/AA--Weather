@@ -8,16 +8,49 @@ class App extends Component {
   state = {
     city: '',
     country: '',
-    dayWeatherObj: null
+    currentWeatherObj: null,
+    dayWeatherObj: null,
+    nextDays: false,
+    latitude: null,
+    longitude: null,
+
+  }
+
+  getLocation = () => {
+    navigator.geolocation.getCurrentPosition(this.showPosition);
+  }
+   showPosition = (position) => {
+     this.setState({latitude: position.coords.latitude})
+     this.setState({longitude: position.coords.longitude})
+
+  }
+
+  componentDidMount() {
+    this.getLocation()
+    setTimeout(() => {
+      getData(null, null, null, this.state.latitude, this.state.longitude)
+      .then(data => {
+        this.setState({currentWeatherObj: data})
+      })
+      getData(null, null, null, this.state.latitude, this.state.longitude, 'day')
+      .then(data => {
+        this.setState({dayWeatherObj: data})
+      })
+    }, 500)
   }
 
   handleForm = (event) => {
     event.preventDefault();
     const {city, country} = event.target
     this.setState({city: city.value,
-      country: country.value
+      country: country.value,
+      nextDays: false
     })
-    getData(this.state.city, this.state.country)
+    getData(this.state.city, this.state.country, 'current')
+      .then(data => {
+        this.setState({currentWeatherObj: data})
+      })
+    getData(this.state.city, this.state.country, 'day')
       .then(data => {
         this.setState({dayWeatherObj: data})
       })
@@ -28,14 +61,34 @@ class App extends Component {
     this.setState({[name]: value})
   }
 
+  handelButton = () => {
+    this.state.nextDays ? this.setState({nextDays: false}) : this.setState({nextDays: true})
+  }
+
   render() {
     return (
       <div>
         <Header handleForm={this.handleForm} state={this.state} handleInput={this.handleInput}/>
-        <Body result={this.state.dayWeatherObj}/>
+        <Body currentObj={this.state.currentWeatherObj} dayObj={this.state.dayWeatherObj} nextStatus={this.state.nextDays} handelButton={this.handelButton}/>
       </div>
     );
   }
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
