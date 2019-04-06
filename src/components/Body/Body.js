@@ -1,82 +1,36 @@
 import React from 'react';
+import Current from './Current/Current'
+import Day from './Day/Day'
+import NextDays from './NextDays/NextDays'
+import Button from './Button/Button'
 
 function Body (props) {
-  const { result } = props;
-  if(!result) {
-    return (
-      null
-    )
-  } else {
-    const date = new Date() + '';
-    const curruntDate = date.split(' ');
+  const { currentObj, dayObj, nextStatus, handelButton } = props;
+  if (!currentObj || !dayObj) {
     return(
       <div>
-        <div>
-          <img src={`http://openweathermap.org/img/w/${result.weather[0].icon}.png`} alt="icon"/>
-          <h3>{`${curruntDate[0]}, ${curruntDate[2]} ${curruntDate[1]}`}</h3>
-          <h3>{result.weather[0].main}</h3>
-        </div>
+        <h2>Plz Wait ..</h2>
       </div>
-    );
+    )
+  } else {
+    if(currentObj.cod == 200 &&  dayObj.cod == 200) {
+      return (
+        <div>
+          <Current result={currentObj} />
+          <Day result={dayObj}/>
+          <Button handelButton={handelButton} nextStatus={nextStatus}/>
+          <NextDays result={dayObj} nextStatus={nextStatus}/>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <h2>Nothing Found, Try again</h2>
+        </div>
+      )
+    }
   }
+  
 }
 
 export default Body
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   {/* <div>
-        <img src={result.image} alt="weather status"/>
-        <div>
-          <span>{props.result.date}</span>
-          <span>{props.result.weatherState}</span>
-          <span></span>
-        </div>
-      </div>
-      <div>
-        <ul>
-          <li>
-            <span>6 AM</span> 
-            <span>{props.result.weatherState}</span>
-            <span>{props.result.temp}</span>
-            <span>{props.result.stateIcon}</span>
-          </li>
-          <li>
-            <span>12 PM</span> 
-            <span>{props.result.weatherState}</span>
-            <span>{props.result.temp}</span>
-            <span>{props.result.stateIcon}</span>
-          </li>
-          <li>
-            <span>6 PM</span> 
-            <span>{props.result.weatherState}</span>
-            <span>{props.result.temp}</span>
-            <span>{props.result.stateIcon}</span>
-          </li>
-          <li>
-            <span>12 AM</span> 
-            <span>{props.result.weatherState}</span>
-            <span>{props.result.temp}</span>
-            <span>{props.result.stateIcon}</span>
-          </li>
-        </ul>
-      </div> */}
