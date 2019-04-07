@@ -1,19 +1,27 @@
 import React from 'react'
+import './Header.css'
 
 function Header (props) {
-  return (
-    <div>
+  const {nextStatus} = props
+  if(!nextStatus) {
+    return (
       <div>
-        <h1>AG-Weather</h1>
+        <div>
+          <h1 className={'titel'}>AG-Weather</h1>
+        </div>
+        <div>
+          <form onSubmit={props.handleForm} className={'form'}>
+            <input className={'input'} type="text" name='city' placeholder='City ..' value={props.state.city} onChange={props.handleInput} />
+            <input className={'input'} type="text" name='country' placeholder='Country ..' value={props.state.country} onChange={props.handleInput} />
+            <button className={'submit'} type='submit'> Search </button>
+          </form>
+        </div>
       </div>
-      <div>
-        <form onSubmit={props.handleForm}>
-          <input type="text" name='city' placeholder='City ..' value={props.state.city} onChange={props.handleInput} />
-          <input type="text" name='country' placeholder='Country ..' value={props.state.country} onChange={props.handleInput} />
-          <button type='submit'> Search </button>
-        </form>
-      </div>
-    </div>
-  )
+    )
+  } else {
+    return (
+      null
+    )
+  }
 }
 export default Header

@@ -1,5 +1,8 @@
 import React from 'react'
 import List from './List/List'
+import './nextdays.css'
+
+const toggleHide = e => e.target.parentNode.lastChild.classList.toggle("hide")
 
 function NextDays (props) {
   const { result, nextStatus } = props
@@ -9,34 +12,39 @@ function NextDays (props) {
     const day3 = result.list.slice(18, 26)
     const day4 = result.list.slice(26, 34)
     return (
-      <div>
-        <div>
-          <span>Day</span>          
-          <span>00.00-03.00</span>       
-          <span>03.00-06.00</span>       
-          <span>06.00-09.00</span>       
-          <span>09.00-12.00</span>       
-          <span>12.00-15.00</span>     
-          <span>15.00-18.00</span>     
-          <span>18.00-21.00</span>     
-          <span>21.00-00.00</span>     
-        </div>
+      <div>    
         <div>
           <div>
-            {day1[0].dt_txt.split(' ')[0]}
-            {day1.map((item, index) => <List key={index} item={item} />)}
+            <div className={'day'} onClick={toggleHide} >
+              {day1[0].dt_txt.split(' ')[0]}
+            </div>
+            <div className="hide">
+              {day1.map((item, index) => <List key={index} index={index} item={item} />)}
+            </div>
           </div>
           <div>
-            {day2[0].dt_txt.split(' ')[0]}
-            {day2.map((item, index) => <List key={index} item={item} />)}
+            <div className={'day'} onClick={toggleHide}>
+              {day2[0].dt_txt.split(' ')[0]}
+            </div>
+            <div className="hide">
+              {day2.map((item, index) => <List key={index} index={index} item={item} />)}
+            </div>
           </div>
           <div>
-            {day3[0].dt_txt.split(' ')[0]}
-            {day3.map((item, index) => <List key={index} item={item} />)}
+            <div className={'day'} onClick={toggleHide}>
+              {day3[0].dt_txt.split(' ')[0]}
+            </div>
+            <div className="hide">
+              {day3.map((item, index) => <List key={index} index={index} item={item} />)}
+            </div>
           </div>
           <div>
-            {day4[0].dt_txt.split(' ')[0]}
-            {day4.map((item, index) => <List key={index} item={item} />)}
+            <div className={'day'} onClick={toggleHide}>
+              {day4[0].dt_txt.split(' ')[0]}
+            </div>
+            <div className="hide">
+              {day4.map((item, index) => <List key={index} index={index} item={item} />)}
+            </div>
           </div>
         </div>
       </div>

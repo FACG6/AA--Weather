@@ -1,0 +1,19 @@
+.contener{
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+  border: 1px solid black;
+  background: rgba(88, 89, 100, 0.376);
+  margin-top: 7px;
+  padding: 5px;
+  border-radius: 10px;
+}
+.icon{
+  border-radius: 50%;
+  background: rgba(198, 200, 212, 0.89);
+  width: 50px;
+  height: 50px;
+}
+.firstDiv{
+  width: 50%;
+}
