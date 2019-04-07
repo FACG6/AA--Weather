@@ -12,7 +12,7 @@ function NextDays (props) {
     const day3 = result.list.slice(18, 26)
     const day4 = result.list.slice(26, 34)
     return (
-      <div>    
+      <div className='contenerList'>    
         <div>
           <div>
             <div className={'day'} onClick={toggleHide} >
