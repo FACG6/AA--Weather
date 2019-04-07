@@ -67,8 +67,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Header handleForm={this.handleForm} state={this.state} handleInput={this.handleInput}/>
+      <div className={'body'}>
+        <Header nextStatus={this.state.nextDays} handleForm={this.handleForm} state={this.state} handleInput={this.handleInput}/>
         <Body currentObj={this.state.currentWeatherObj} dayObj={this.state.dayWeatherObj} nextStatus={this.state.nextDays} handelButton={this.handelButton}/>
       </div>
     );

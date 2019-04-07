@@ -16,8 +16,8 @@ function Body (props) {
     if(currentObj.cod == 200 &&  dayObj.cod == 200) {
       return (
         <div>
-          <Current result={currentObj} />
-          <Day result={dayObj}/>
+          <Current result={currentObj} nextStatus={nextStatus}/>
+          <Day result={dayObj} nextStatus={nextStatus}/>
           <Button handelButton={handelButton} nextStatus={nextStatus}/>
           <NextDays result={dayObj} nextStatus={nextStatus}/>
         </div>
@@ -30,7 +30,6 @@ function Body (props) {
       )
     }
   }
-  
 }
 
 export default Body

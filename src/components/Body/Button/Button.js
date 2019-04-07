@@ -1,4 +1,5 @@
 import React from 'react'
+import './Button.css'
 
 function Button (props) {
   let msg = ''
@@ -8,7 +9,7 @@ function Button (props) {
     msg = 'Next Days'
   }
   return(
-    <button onClick={props.handelButton}>{msg}</button>
+    <button className={'next'} onClick={props.handelButton}>{msg}</button>
   )
 }
 
