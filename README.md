@@ -1,5 +1,5 @@
-# **AG Weather App** 
-### [AG Weather](https://ag--weather.herokuapp.com/)
+# **AA Weather App** 
+### [AA Weather](https://ag--weather.herokuapp.com/)
 
 ### **Big Goal**
 Find out the weather for the current day and next 5 days.
