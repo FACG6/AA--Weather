@@ -7,7 +7,7 @@ function Header (props) {
     return (
       <div>
         <div>
-          <h1 className={'titel'}>AG-Weather</h1>
+          <h1 className={'titel'}>AA-Weather</h1>
         </div>
         <div>
           <form onSubmit={props.handleForm} className={'form'}>
